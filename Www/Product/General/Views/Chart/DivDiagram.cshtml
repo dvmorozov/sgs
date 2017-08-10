@@ -1,0 +1,7 @@
+﻿@using System.Globalization
+@model web.Models.ViewChart
+
+<script src="@Url.Content("~/Scripts/Diagram.js")" type="text/javascript"></script>
+
+<!-- <iframe src="@Url.Action("ShowDiagram", "Chart", new {id = Model.ID})" @Html.Raw("width=\"" + ((int)ViewBag.Width).ToString(CultureInfo.InvariantCulture) + "\" height=\"" + ((int)ViewBag.Height).ToString(CultureInfo.InvariantCulture) + "\"")></iframe> -->
+@Html.Partial("ShowDiagram", Model)

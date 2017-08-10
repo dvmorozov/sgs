@@ -1,0 +1,54 @@
+﻿@model web.Models.ViewSVGDataElementState
+
+@{
+	ViewBag.Title = "Delete state";
+	Layout = "~/Views/Shared/_LayoutRepresentation.cshtml";
+}
+
+<h2>@Html.Raw(ViewBag.Title)</h2>
+
+<p>
+	@Html.ActionLink("States", "Index", new { id = (long)ViewBag.ChartID, docID = (long)ViewBag.DocID, svgID = (string)ViewBag.SVGID, valueIdentifier = (string)ViewBag.ValueIdentifier, identifier = (string)ViewBag.Identifier })
+</p>
+
+<h3>Are you sure you want to delete this state of data element "@Html.Raw((string)ViewBag.Identifier)"?</h3>
+
+@using (Html.BeginForm())
+{
+	<fieldset>
+		<legend>State properties</legend>
+		@Html.Hidden("chartID", (long)ViewBag.ChartID)
+		@Html.Hidden("docID", (long)ViewBag.DocID)
+		@Html.Hidden("svgID", (string)ViewBag.SVGID)
+		@Html.Hidden("valueIdentifier", (string)ViewBag.ValueIdentifier)
+		@Html.Hidden("identifier", (string)ViewBag.Identifier)
+
+		<table style="width:100%;">
+			<tr>
+				<td style="border: 0 hidden;">
+					<div class="display-label">Low Limit</div>
+				</td>
+				<td style="border: 0 hidden;">
+					<div class="display-field">
+						@Html.DisplayFor(model => model.LowLimit)
+					</div>
+				</td>
+			</tr>
+
+			<tr>
+				<td style="border: 0 hidden;">
+					<div class="display-label">State</div>
+				</td>
+				<td style="border: 0 hidden;">
+					<div class="display-field">
+						@Html.DisplayFor(model => model.State)
+					</div>
+				</td>
+			</tr>
+		</table>
+	</fieldset>
+
+	<p>
+		<input type="submit" value="Delete" />
+	</p>
+}

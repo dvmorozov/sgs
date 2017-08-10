@@ -1,0 +1,16 @@
+﻿@model web.Models.ViewChart
+
+@{
+	ViewBag.Title = Model.Name.TrimEnd();
+	Layout = "~/Views/Shared/_LayoutRepresentation.cshtml";
+}
+
+<h2>@Html.Raw(Model.Name.TrimEnd())</h2>
+
+<p>
+	@Html.ActionLink("Charts & Diagrams", "Index", "Chart") |
+	@Html.ActionLink("View", "ShowChart", new { id = Model.ID }) |
+	@Html.ActionLink("Edit", "Edit", "Chart", new { id = Model.ID }, null)
+</p>
+
+@Html.Partial("DivDiagramDataSet")

@@ -1,0 +1,35 @@
+﻿@model IEnumerable<web.Models.ViewBuilding>
+
+@{
+	ViewBag.Title = "Select building";
+	Layout = "~/Views/Shared/_LayoutModeling.cshtml";
+
+	var grid = new WebGrid(Model,
+					   defaultSort: "Building",
+					   rowsPerPage: 20); 
+}
+
+<h2>Select building</h2>
+
+<p>
+	@Html.ActionLink("Cancel", ""/*empty action name*/, (String)ViewBag.ReturnTo) |
+	@Html.ActionLink("New", "CreateBuilding", new { id = (Int64)ViewBag.StreetID, cityID = (Int64)ViewBag.CityID, stateID = (Int64)ViewBag.StateID, countryID = (Int64)ViewBag.CountryID, returnTo = (String)ViewBag.ReturnTo }) |
+	@Html.ActionLink("Locations", "Index")
+</p>
+
+<div class="webgrid-wrapper">
+	<div class="webgrid-title"></div>
+	<div id="grid">
+		@grid.GetHtml( 
+			tableStyle: "grid", 
+			headerStyle: "head", 
+			alternatingRowStyle: "alt",
+			footerStyle: "footer",
+			columns: grid.Columns(
+				grid.Column("Building", "Building", style: "product"),
+				grid.Column("ID", "", @<text>@Html.ActionLink("Select", "SelectApartament", new { id=item.ID, streetid=item.StreetID, cityid=item.CityID, stateid=item.StateID, countryid=item.CountryID, returnTo=(String)ViewBag.ReturnTo })</text>, style: "product", canSort: false)
+			),
+			numericLinksCount: 20
+		)
+	</div>
+</div>

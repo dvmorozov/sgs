@@ -1,0 +1,92 @@
+﻿@model web.Models.ViewChart
+
+@{
+	ViewBag.Title = "Edit chart properties";
+	Layout = "~/Views/Shared/_LayoutRepresentation.cshtml";
+}
+
+<h2>@Html.Raw(ViewBag.Title)</h2>
+
+<p>
+	@Html.ActionLink("Charts & Diagrams", "Index") |
+	@Html.ActionLink("View", "ShowChart", new { id = Model.ID }) |
+	@Html.ActionLink("Dataset", "ShowDiagramDataSet", new { id = Model.ID })
+</p>
+
+@using (Html.BeginForm())
+{
+	@Html.ValidationSummary(true)
+	<fieldset>
+		<legend>Chart properties</legend>
+
+		@Html.HiddenFor(model => model.ID)
+		@Html.HiddenFor(model => model.DataOwnerID)
+		@Html.HiddenFor(model => model.DataSetType)
+		@Html.HiddenFor(model => model.DataSetMaxCount)
+		@Html.HiddenFor(model => model.ChartType)
+
+		<table style="width:100%;">
+			<tr>
+				<td style="border: 0 hidden;">
+					<div class="editor-label">
+						@Html.LabelFor(model => model.Name, "Title")
+					</div>
+				</td>
+				<td style="border: 0 hidden;">
+					<div class="editor-field">
+						@Html.EditorFor(model => model.Name, null, new { style = "width:200px;" })
+						@Html.ValidationMessageFor(model => model.Name)
+					</div>
+				</td>
+			</tr>
+
+			<tr>
+				<td style="border: 0 hidden;">
+					<div class="editor-label">
+						@Html.LabelFor(model => model.Width, "Chart width (pixels)")
+					</div>
+				</td>
+				<td style="border: 0 hidden;">
+					<div class="editor-field">
+						@Html.EditorFor(model => model.Width, null, new { style = "width:200px;" })
+						@Html.ValidationMessageFor(model => model.Width)
+					</div>
+				</td>
+			</tr>
+
+			<tr>
+				<td style="border: 0 hidden;">
+					<div class="editor-label">
+						@Html.LabelFor(model => model.Height, "View height (pixels)")
+					</div>
+				</td>
+				<td style="border: 0 hidden;">
+					<div class="editor-field">
+						@Html.EditorFor(model => model.Height, null, new { style = "width:200px;" })
+						@Html.ValidationMessageFor(model => model.Height)
+					</div>
+				</td>
+			</tr>
+		</table>
+	</fieldset>
+	<p>
+		<input type="submit" value="Save" />
+	</p>
+}
+
+<h2>Upload SVG-diagram</h2>
+
+@using (Html.BeginForm("UploadDiagram", "Chart", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{       
+	@Html.Hidden("chartID", Model.ID)
+	<fieldset>
+		<legend>Choose SVG-file to upload</legend>
+		<input type="file" name="file" @Html.Raw(Model.DocID != null ? "disabled=\"disabled\"" : "") />
+		<div class="hint">
+			Hint: SVG-file can be uploaded only once. The file should not contain  &lt;g&gt;-tags! Support of these tags will be coming soon.
+		</div>
+	</fieldset>
+	<p>
+		<input type="submit" name="Submit" value="Upload" @Html.Raw(Model.DocID != null ? "disabled=\"disabled\"" : "") />
+	</p>
+}

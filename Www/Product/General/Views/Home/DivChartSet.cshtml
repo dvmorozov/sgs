@@ -1,0 +1,94 @@
+﻿@model ViewChartSet
+
+@using System.Globalization
+@using web.Models;
+@using web.Controllers;
+
+@{
+	var l1 = (List<ViewChartSetsCharts>)ViewBag.ChartSetsCharts;
+}
+
+@{
+	var chartIndex = 0;
+	
+	for (var row = 0; row < Model.Rows; row++)
+	{
+		for (var col = 0; col < Model.Cols; col++)
+		{
+			for (var i = 0; i < l1.Count(); i++)
+			{
+				var item = l1[i];
+				if (item.ColIndex != col || item.RowIndex != row)
+				{
+					continue;
+				}
+				var s = Url.Action("GetChartContentForChartSet", "Home", new { chartIndex = chartIndex++, width = Model.CellWidth, height = Model.CellHeight });
+				@Html.Raw(
+					"<script type=\"text/javascript\">" +
+						"$(function () {" +
+							"var seqNum = 0;" +
+
+							"function update() {" +
+								"var u = '" + s + "' + '&seqNum=' + seqNum++;" +
+								/* https://www.evernote.com/shard/s132/nl/14501366/82196283-fd9c-43a4-844a-5b2845f602e8  */
+								/* Вместо AJAX - простая замена ссылки. Счетчик увеличивается, чтобы обойти кэширование. */
+								"document.getElementById('div_chart_" + item.ChartID.ToString(CultureInfo.InvariantCulture) + "').setAttribute('src', u);" +
+
+								"setTimeout(function () {" +
+									"update();" +
+								"}, 5000);" +
+							"};" +
+							"update();" +
+						"});" +
+					"</script>")
+				break;
+			}
+		}
+	}
+}
+
+<div class="chart-wrapper">
+	<legend>@Model.Name</legend>
+	<table>
+		@{
+			var l = (List<ViewChartSetsCharts>)ViewBag.ChartSetsCharts;
+
+			for (Int32 row = 0; row < Model.Rows; row++)
+			{ 
+				<tr>
+					@for (Int32 col = 0; col < Model.Cols; col++)
+					{
+						//  search of appropriate chart
+						var found = false;
+						for (Int32 i = 0; i < l.Count(); i++)
+						{
+							var item = l[i];
+							if (item.ColIndex != col || item.RowIndex != row)
+							{
+								continue;
+							}
+							<td style=@Html.Raw("\"border: 0 hidden; padding:" + Model.Margin.ToString(CultureInfo.InvariantCulture) + "px;\"")>
+								@{
+									ViewBag.ChartID = item.ChartID;
+									ViewBag.Width = Model.CellWidth;
+									ViewBag.Height = Model.CellHeight;
+								}
+								@Html.Partial(item.ChartType.ToLower() == ProjectChartController.Diagram.ToLower() ? "DivDiagram" : "DivChartChartSet", new {item.ChartID, Width = Model.CellWidth, Height = Model.CellHeight })
+								@*data are translated through ViewData!*@
+							</td>
+							found = true;
+							break;
+						}
+
+						if (!found)
+						{ 
+							<td style=@Html.Raw("\"border: 0 hidden; padding:" + Model.Margin.ToString(CultureInfo.InvariantCulture) + "px;\"")>
+							</td>
+						}
+					}
+				</tr>
+			}
+		}
+	</table>
+</div>
+

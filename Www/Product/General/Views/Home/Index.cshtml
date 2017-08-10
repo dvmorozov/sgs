@@ -1,0 +1,46 @@
+﻿
+<div>
+    <div class="logo" style="float:left;">@Html.Raw((String)ViewBag.AppName1) <span>@Html.Raw((String)ViewBag.AppName2)</span></div>
+    <div style="font-size: 1.2em;">&nbsp;is web application intended mainly to work with metering devices. But it may be suitable also to work with other data sources. 
+    <br />
+    This application allows to configure your smart devices, accumulate data from devices, generate reports and represent them in different forms.</div>
+
+    <br />
+    <br />
+
+    <div style="font-size: 1.2em;">
+    You can use this software in a few ways:
+        <ul>
+            <li>For trial purposes you can use the software installed in the "<a href="http://sandbox.rationalcity.com">sandbox</a>" for free.</li>
+            <li>You can rent a virtual server with the software installed.</li>
+            <li>You can buy source codes of the software, build it and install onto your own server.</li>
+        </ul>
+    More information about usage you can find on the @Html.ActionLink("Products", "Index", "Product") page.
+
+    <br />
+    <br />
+    A demo diagram animated by the data from the database you can see @Html.ActionLink("here", "ShowChart", "Home").
+
+    <br />
+    <br />
+    In any case feel free to <a title="" href="mailto:support@rationalcity.com">contact with us</a>.
+    </div>
+</div>
+
+<div style="text-align:center;">
+    <br />
+    <br />
+    <div style="font-size: 1.2em; text-align:center;">Follow us with Twitter</div>
+    <div style="font-size: 1.2em; text-align:center;"><a href="http://www.twitter.com/rationalcity"><img style="border: 0 hidden;" src="../../Content/images/bird_48_blue.png" alt="@Html.Raw((String)ViewBag.AppName1) @Html.Raw((String)ViewBag.AppName2) on Twitter"/></a></div>
+    <br />
+    <br />
+    <div style="font-size: 1.2em; text-align:center;">We will also be very grateful for any donations <br />which will help to support project development</div>
+    <div style="text-align:center;">
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+        <input type="hidden" name="cmd" value="_s-xclick">
+        <input type="hidden" name="hosted_button_id" value="XUDC5WBDYUQPG">
+        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+        </form>
+    </div>
+</div>

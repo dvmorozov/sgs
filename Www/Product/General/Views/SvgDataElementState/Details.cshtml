@@ -1,0 +1,41 @@
+﻿@model web.Models.ViewSVGDataElementState
+
+@{
+	ViewBag.Title = "State details";
+	Layout = "~/Views/Shared/_LayoutRepresentation.cshtml";
+}
+
+<h2>@Html.Raw(ViewBag.Title)</h2>
+
+<p>
+	@Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+	@Html.ActionLink("States", "Index", new { id = (long)ViewBag.ChartID, docID = (long)ViewBag.DocID, svgID = (string)ViewBag.SVGID, valueIdentifier = (string)ViewBag.ValueIdentifier, identifier = (string)ViewBag.Identifier })
+</p>
+
+<fieldset>
+	<legend>State properties</legend>
+
+	<table style="width:100%;">
+		<tr>
+			<td style="border: 0 hidden;">
+				<div class="display-label">Low Limit</div>
+			</td>
+			<td style="border: 0 hidden;">
+				<div class="display-field">
+					@Html.DisplayFor(model => model.LowLimit)
+				</div>
+			</td>
+		</tr>
+
+		<tr>
+			<td style="border: 0 hidden;">
+				<div class="display-label">State</div>
+			</td>
+			<td style="border: 0 hidden;">
+				<div class="display-field">
+					@Html.DisplayFor(model => model.State)
+				</div>
+			</td>
+		</tr>
+	</table>
+</fieldset>

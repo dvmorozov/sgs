@@ -1,0 +1,45 @@
+﻿
+<script language="javascript" type="text/javascript">
+    $(function () {
+        update();
+    });
+
+    function update() {
+        u = String(document.URL);
+        $.ajax({
+            url: u.replace(/ShowChart/g, 'Update'),
+            method: "GET",
+            dataType: "text",
+            cache: false,
+            timeout: 10000,
+
+            success: function (responseXML) {
+                if (undefined == responseXML)
+                    return;
+                //document.getElementById('div_chart').setAttribute('src', responseXML);
+                var myJsonObject = $.parseJSON(responseXML);
+                if(null == myJsonObject.chart_data.data_sets.DataSet[0]){
+                    //  single dataset, not an array
+                    alert(myJsonObject.chart_data.data_sets.DataSet.DataPoint.length);
+                }
+                else{
+                    for(var i = 0; i < myJsonObject.chart_data.data_sets.DataSet.lenght; i++){
+                        //alert(myJsonObject.chart_data.data_sets.DataSet.DataPoint[0].length);
+                    }
+                }
+            },
+
+            error: function (xmlHttp, textStatus, errorThrown) { },
+            /*complete: function () {
+                setTimeout(function () {
+                    update();
+                }, 5000);
+            }
+            */
+        });
+    };
+</script>
+
+<div class="chart-wrapper">
+<img id="div_chart" alt="" src="" @Html.Raw("width=\"" + ((int)ViewBag.Width).ToString() + "\" height=\"" + ((int)ViewBag.Height).ToString() + "\"")/>
+</div>

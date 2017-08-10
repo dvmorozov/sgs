@@ -1,0 +1,159 @@
+﻿@{
+    ViewBag.Title = "Product";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<style type="text/css" >
+    body {
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+        color:#cccccc;
+        background:#0e235a;
+        min-height:1178px;
+    }
+</style>
+
+<h2>Products</h2>
+
+<table width="100%">
+    <tr>
+        <td style="border: 0 hidden;">
+            <h2>Source codes</h2>
+            You can buy all of source codes of this application for $999. 
+            <br /><br />
+            You can use it without any limitations for any purposes but excluding reselling. 
+            Details of the license agreement you can find @Html.ActionLink("here", "SourcesLicenseAgreement", "Product").
+            <br /><br />
+            The source codes are provided as packed SVN snapshot corresponding to the version that you can see in the bottom of this page.
+            This snapshot includes the database for MS SQL Server, sources of stored procedures and sources of the application written in C# with using MVC3 and Razor.
+            To build and run the application you will need at least "Microsoft Visual Web Developer 2010 Express Edition" and "Microsoft SQL Server Express Edition".
+            Both of products are downloadable from the Microsoft site for free.
+        </td>
+        <td style="border: 0 hidden; vertical-align:bottom;">
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+            <input type="hidden" name="cmd" value="_s-xclick">
+            <input type="hidden" name="hosted_button_id" value="EJNEN4E2GB3ZU">
+            <input type="image" src="https://www.paypalobjects.com/en_US/RU/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+            <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+            </form>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 0 hidden;" colspan="2">
+            <h2>Virtual servers</h2>
+            You can subscribe to the use of a virtual server that is running this application. 
+            There are different types of virtual servers for different number of devices in servicing. 
+            These types are described below in more details. 
+            In one day after we receive the notification about your subscription we will start and configure your virtual server. 
+            You will have administrator access rights to application, but not to the server. 
+            Your virtual server will be accessible by domain like <i>your_name.rationalcity.com</i>. 
+            We will send your credentials to access the server by email typed in the subscription form.
+            <br />
+            <br />
+            <table width="100%">
+                <tr>
+                    <td style="border: 0 hidden; font-style:italic; font-weight:bold;">Instance Type</td>
+                    <td style="border: 0 hidden; font-style:italic; font-weight:bold; width:100%;"><b>Description</b></td>
+                    <td style="border: 0 hidden; font-style:italic; font-weight:bold;"><b>Subscription payment per month</b></td>
+                    <td style="border: 0 hidden;"></td>
+                </tr>
+
+                <tr>
+                    <td style="border: 0 hidden;">"Micro"</td>
+                    <td style="border: 0 hidden; width:100%;"></td>
+                    <td style="border: 0 hidden;">$30</td>
+                    <td style="border: 0 hidden; vertical-align:bottom;">
+                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="SJS8Z9B5XGC6J">
+                        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                        </form>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="border: 0 hidden;">"Small"</td>
+                    <td style="border: 0 hidden; width:100%;"></td>
+                    <td style="border: 0 hidden;">$180</td>
+                    <td style="border: 0 hidden; vertical-align:bottom;">
+                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="G6MNZZG3QKPVQ">
+                        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                        </form>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="border: 0 hidden;">"Medium"</td>
+                    <td style="border: 0 hidden; width:100%;"></td>
+                    <td style="border: 0 hidden;">$360</td>
+                    <td style="border: 0 hidden; vertical-align:bottom;">
+                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="5NNE4DYJUVG64">
+                        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                        </form>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="border: 0 hidden;">"Large"</td>
+                    <td style="border: 0 hidden; width:100%;"></td>
+                    <td style="border: 0 hidden;">$700</td>
+                    <td style="border: 0 hidden; vertical-align:bottom;">
+                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="343FVKTHDFA7G">
+                        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                        </form>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td style="border: 0 hidden;">"Extra"</td>
+                    <td style="border: 0 hidden; width:100%;"></td>
+                    <td style="border: 0 hidden;">$1380</td>
+                    <td style="border: 0 hidden; vertical-align:bottom;">
+                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="MRDNKFZRYD7B4">
+                        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                        </form>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td style="border: 0 hidden;"></td>
+                    <td style="border: 0 hidden; font-style:italic; font-weight:bold; width:100%;">You can discard your subscription anytime you wish by using this button.</td>
+                    <td style="border: 0 hidden;"></td>
+                    <td style="border: 0 hidden; vertical-align:bottom; text-align:center;">
+                        <A HREF="https://www.paypal.com/cgi-bin/webscr?cmd=_subscr-find&alias=W2F6UXF9G3VX8">
+                        <IMG SRC="https://www.paypalobjects.com/en_US/i/btn/btn_unsubscribe_LG.gif" BORDER="0">
+                        </A>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+<div style="font-style:italic; font-weight:bold;">All payments are made by <a href="http://paypal.com">PayPal</a>.</div>
+<br />
+<br />
+<h2>Services</h2>
+
+<p>
+We can create custom diagram showing your technological process. We will need some textual description (advisably accompanied by some drawings or schemas). The charge for this is $99. Before this you should approve sketch of your diagram. We will send to you the SVG-document in full resolution during 1 business day after receipt of your payment.
+</p>
+<p>
+We can customize this product for your purposes. Our reward will depend on the amount of improvements. We will provide all source codes of applications under these @Html.ActionLink("terms and conditions", "SourcesLicenseAgreement", "Product").
+</p>
+<p>
+We will be glad to answer all your questions you can ask <a title="" href="mailto:support@oonze.com">here</a>.
+</p>

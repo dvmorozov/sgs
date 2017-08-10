@@ -1,0 +1,24 @@
+﻿
+@{
+	Layout = ""; /*must be set empty explicitly*/
+}
+
+@{
+	if (ViewBag.ExceptionMessage != null)
+	{
+		@Html.Raw("Sorry, an error occurred while processing your request: " + (String)ViewBag.ExceptionMessage)
+	}
+	else
+	{
+		try
+		{
+			// rendering of the XML-document
+			var xmlDoc = (String)ViewBag.XmlDoc;
+			@Html.Raw(xmlDoc)
+		}
+		catch (Exception e)
+		{
+			@Html.Raw("Sorry, an error occurred while processing your request: " + e.Message)
+		}
+	}
+}

@@ -1,0 +1,58 @@
+﻿<div class="logo" style="float: left;">@Html.Raw((String)ViewBag.AppName1) <span>@Html.Raw((String)ViewBag.AppName2)</span></div>
+<div style="font-size: 1.2em;">&nbsp;is the cloud based data acquisition application.</div>
+<div style="font-size: 1.0em;">
+	<h1>Why cloud?</h1>
+	<h2>Global</h2>
+	<ul>
+		<li>Available everywhere where the Internet is. Ideally suited for distributed measurement system.</li>
+		<li>Web standards provide access to the data from any type of mobile device. Ideally suited for thin client devices.</li>
+		<li>Practically unlimited number of devices and amount of stored data.</li>
+	</ul>
+	<h2>Simple</h2>
+	<ul>
+		<li>Only 2 levels in the system: sensors at the bottom and the application at the top. All intermediate data concentrators are excluded.<p>
+			The overall structure is like a tree:<br/>
+			The sensors at the bottom are like roots.<br/>
+			The broadband networks in the middle are like trunk.<br/>
+			The virtual servers in the cloud are like crown.<br/>
+		</p></li>
+		<li>Modern intellectual sensors out of the box integrated with broadband wireless networks and cloud applications.</li>
+		<li>As the consequence of the points above the lowest total cost of ownership.</li>
+	</ul>
+	<h2>Environment friendly</h2>
+	<ul>
+		<li>Much more effective usage of electric power in the industrial environment of datacenter and consequently less carbon footprint. 
+			Moreover the datacenter can be built near the source of cheap and renewable energy.<br/>
+			Personal computer like personal vehicle whereas datacenter like public transport that is much more efficient.
+			The goal is to utilize the advantages of web technologies and to make cloud applications as comfortable (rich, fast, usable)
+			as desktop ones.</li>
+		<li>Equipment recycling in that case falls on the shoulders of cloud services providers and can be done most effectively.</li>
+		<li>Proliferation of thin clients additionally reduces power consumption, simultaneously increases availability (because of 
+			more fast start up in comparison with traditional workstations) and decreases the amount of garbage requiring recycling.
+			Moreover thin clients save time and money because don't require software or hardware upgrade.
+		</li>
+	</ul>
+	<h2>Applications</h2>
+	<ul>
+		<li>Monitoring of geographically distributed technical systems with geolocation. Prediction of future state of distributed systems and diagnostic of failures based on the collected data.</li>
+		<li>Monitoring of health parameters by means of integration with wearable devices.</li>
+		<li>Integration between applications which is natural for the web allows much more advanced functionality.</li>
+	</ul>
+	<h2>Future prospects</h2>
+	<ul>
+		<li>Approaching to the concept of "network as computer". When most of applications are deployed at the Internet and users have thin clients to work with them.</li>
+		<li>Making cloud applications as comfortable (rich, fast, usable) as desktop ones.</li>
+		<li>Integrating cloud application with "internet-of-things" (including wearable devices).</li>
+	</ul>
+	<h2>What is now?</h2>
+	<ul>
+		<li>Today this application has some basic functionality: device modeling and registration, data uploading by HTTP and XML, data visualization by charts and animated diagrams.</li>
+		<li>Some examples of functionality you can see @Html.ActionLink("here", "Demo", "Home").</li>
+	</ul>
+	<h2>Where is the project going?</h2>
+	<ul>
+		<li>Development and improvement of common SCADA functionality: calculations, logs, reports, events.</li>
+		<li>Development and improvement of UI: more convenient configuration, reports, user-configurable styles, diagram constructor.</li>
+		<li>Improving of security: using HTTPS and user-side encryption / decryption.</li>
+	</ul>
+</div>

@@ -1,0 +1,21 @@
+﻿@model ViewChart
+		   
+@using web.Models;
+@using web.Controllers;
+
+@{
+	ViewBag.Title = Model.Name.TrimEnd();
+	Layout = "~/Views/Shared/_LayoutRepresentation.cshtml";
+}
+
+<h2>@Html.Raw(Model.Name.TrimEnd())</h2>
+
+<p>
+	@Html.ActionLink("Charts & Diagrams", "Index", "Chart") |
+	@Html.ActionLink("Edit", "Edit", "Chart", new { id = Model.ID }, null) |
+	@(Model.ChartType.ToLower() == ProjectChartController.Diagram.ToLower() ? Html.ActionLink("Dataset", "ShowDiagramDataSet", new {id = Model.ID}) : Html.ActionLink("Dataset", "DataSet", new {id = Model.ID}))
+</p>
+
+@Html.Partial(Model.ChartType.ToLower() == ProjectChartController.Diagram.ToLower() ? "DivDiagram" : "DivChart")
+@*Html.Partial(Model.ChartType.ToLower() == ChartController.diagram.ToLower() ? "DivDiagram" : "DivChartGoogle")*@
+

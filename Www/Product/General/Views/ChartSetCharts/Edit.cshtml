@@ -1,0 +1,58 @@
+﻿@model web.Models.ViewChartSetsCharts
+
+@{
+	ViewBag.Title = "Edit chart \"" + Model.ChartName.TrimEnd() + "\" properties";
+	Layout = "~/Views/Shared/_LayoutRepresentation.cshtml";
+}
+
+<h2>@Html.Raw(ViewBag.Title)</h2>
+
+<p>
+	@Html.ActionLink("Charts & Diagrams", "Index", new { id = Model.ChartSetID })
+</p>
+
+@using (Html.BeginForm()) {
+	@Html.ValidationSummary(true)
+	<fieldset>
+		<legend>Chart Properties</legend>
+
+		@Html.HiddenFor(model => model.ChartSetID)
+		@Html.HiddenFor(model => model.ChartID)
+		@Html.HiddenFor(model => model.DataOwnerID)
+		@Html.HiddenFor(model => model.ChartName)
+		@Html.HiddenFor(model => model.ChartSetName)
+
+		<table style="width:100%;">
+			<tr>
+				<td style="border: 0 hidden;">
+					<div class="editor-label">
+						@Html.LabelFor(model => model.ColIndex, "Col Index (0 - 999)")
+					</div>
+				</td>
+				<td style="border: 0 hidden;">
+					<div class="editor-field">
+						@Html.EditorFor(model => model.ColIndex)
+						@Html.ValidationMessageFor(model => model.ColIndex)
+					</div>
+				</td>
+			</tr>
+
+			<tr>
+				<td style="border: 0 hidden;">
+					<div class="editor-label">
+						@Html.LabelFor(model => model.RowIndex, "Row Index (0 - 999)")
+					</div>
+				</td>
+				<td style="border: 0 hidden;">
+					<div class="editor-field">
+						@Html.EditorFor(model => model.RowIndex)
+						@Html.ValidationMessageFor(model => model.RowIndex)
+					</div>
+				</td>
+			</tr>
+		</table>
+	</fieldset>
+	<p>
+		<input type="submit" value="Save" />
+	</p>
+}

@@ -1,0 +1,16 @@
+﻿@model ViewChart
+
+@using web.Models;
+
+<fieldset>
+	<legend>Detach state from SVG-element</legend>
+	@using (Html.BeginForm("DetachDataElement", "Chart", FormMethod.Post, new { enctype = "multipart/form-data" }))
+	{       
+		@Html.Hidden("id", Model.ID)
+		@Html.Hidden("svgID", (string)ViewBag.SVGID)
+		@Html.Hidden("docID", (string)ViewBag.DocID)
+		<p>
+			<input type="submit" name="Submit" value="Detach"/>
+		</p>
+	}
+</fieldset>

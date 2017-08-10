@@ -1,0 +1,9 @@
+﻿@model web.Models.ViewChart
+
+<script src="@Url.Content("~/Scripts/Diagram.js")" type="text/javascript"></script>
+
+<div>
+	<div id="div_chart" class="diagram-wrapper" style="display: inline-block;">
+		@Html.Raw(Model.Content)
+	</div>
+</div>

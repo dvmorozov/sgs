@@ -1,0 +1,36 @@
+﻿@{
+	ViewBag.Title = "Downloads";
+	Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<h2>Downloads</h2>
+
+<table width="100%">
+	<tr>
+		<td style="border: 0 hidden;">
+			<div class="display-label">
+				@Html.Raw("An example of how to develop an application to put data into " + (String)ViewBag.AppName1 + " " + (String)ViewBag.AppName2 + ". <br />")
+				To modify and build the project you will need Microsoft&reg; Visual Web Developer Express.
+			</div>
+		</td>
+		<td style="border: 0 hidden;">
+			<div class="display-field">
+				@Html.Raw("<a href=\"\\Examples\\senddata.zip\">Download</a>")
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td style="border: 0 hidden;">
+			<div class="display-label">
+				@Html.Raw("The XML schema for data to be acceptable by " + (String)ViewBag.AppName1 + " " + (String)ViewBag.AppName2 + ". <br />")
+				@Html.Raw("The schema is compliant with the IEC-62056-62 standard.")
+			</div>
+		</td>
+		<td style="border: 0 hidden;">
+			<div class="display-field">
+				@Html.Raw("<a href=\"\\XMLSchema\\XMLSchema62056.xsd\">Download</a>")
+			</div>
+		</td>
+	</tr>
+</table>
+

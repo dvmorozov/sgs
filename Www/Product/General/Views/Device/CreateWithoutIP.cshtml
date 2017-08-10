@@ -1,0 +1,69 @@
+﻿@using System.Globalization
+@model web.Models.ViewDevice
+
+@{
+	ViewBag.Title = "New meter associated with group \"" + ViewBag.GroupName + "\"";
+	Layout = "~/Views/Shared/_LayoutAcquisition.cshtml";
+}
+
+<h2>@Html.Raw(ViewBag.Title)</h2>
+
+<p>
+	@Html.ActionLink("Meters", "GroupDevices/" + Model.GroupID.ToString(CultureInfo.InvariantCulture))
+</p>
+
+@using (Html.BeginForm()) 
+{
+	@Html.ValidationSummary(true)
+	<fieldset>
+		<legend>Meter properties</legend>
+
+		@Html.HiddenFor(model => model.AddressType)
+		@Html.HiddenFor(model => model.GroupID)
+
+		<table style="width:100%;">
+			<tr>
+				<td style="border: 0 hidden;">
+					<div class="editor-label">
+						@Html.LabelFor(model => model.Name, "Meter name")
+					</div>
+				</td>
+				<td style="border: 0 hidden;">
+					<div class="editor-field">
+						@Html.EditorFor(model => model.Name)
+						@Html.ValidationMessageFor(model => model.Name)
+					</div>
+				</td>
+
+				<td style="border: 0 hidden;">
+					<div class="editor-label">
+					</div>
+				</td>
+				<td style="border: 0 hidden;">
+					<div class="editor-field">
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td style="border: 0 hidden;">
+					<div class="editor-label">
+						@Html.LabelFor(model => model.TypeID, "Meter type")
+					</div>
+				</td>
+				<td style="border: 0 hidden;">
+					<div class="editor-field">
+						@Html.DropDownList("TypeID")
+						@Html.ValidationMessageFor(model => model.TypeID)
+					</div>
+				</td>
+				<td style="border: 0 hidden;">
+				</td>
+				<td style="border: 0 hidden;">
+				</td>
+			</tr>
+		</table>
+	</fieldset>
+	<p>
+		<input type="submit" value="Create" />
+	</p>
+}

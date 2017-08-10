@@ -1,0 +1,116 @@
+﻿@model web.Models.ViewChart
+
+@using web.Controllers;
+
+@{
+	ViewBag.Title = "Edit chart properties";
+	Layout = "~/Views/Shared/_LayoutRepresentation.cshtml";
+}
+
+<h2>@Html.Raw(ViewBag.Title)</h2>
+
+<p>
+	@Html.ActionLink("Charts & Diagrams", "Index") |
+	@Html.ActionLink("View", "ShowChart", new { id = Model.ID }) |
+	@(Model.ChartType.ToLower() == ProjectChartController.Diagram.ToLower() ? Html.ActionLink("Dataset", "ShowDiagramDataSet", new {id = Model.ID}) : Html.ActionLink("Dataset", "DataSet", new {id = Model.ID}))
+</p>
+
+@using (Html.BeginForm())
+{
+	@Html.ValidationSummary(true)
+	<fieldset>
+		<legend>Chart properties</legend>
+
+		@Html.HiddenFor(model => model.ID)
+		@Html.HiddenFor(model => model.DataOwnerID)
+
+		<table style="width:100%;">
+			<tr>
+				<td style="border: 0 hidden;">
+					<div class="editor-label">
+						@Html.LabelFor(model => model.Name, "Title")
+					</div>
+				</td>
+				<td style="border: 0 hidden;">
+					<div class="editor-field">
+						@Html.EditorFor(model => model.Name, null, new { style = "width:200px;" })
+						@Html.ValidationMessageFor(model => model.Name)
+					</div>
+				</td>
+			</tr>
+
+			<tr>
+				<td style="border: 0 hidden;">
+					<div class="editor-label">
+						@Html.LabelFor(model => model.Width, "Chart width (pixels)")
+					</div>
+				</td>
+				<td style="border: 0 hidden;">
+					<div class="editor-field">
+						@Html.EditorFor(model => model.Width, null, new { style = "width:200px;" })
+						@Html.ValidationMessageFor(model => model.Width)
+					</div>
+				</td>
+			</tr>
+
+			<tr>
+				<td style="border: 0 hidden;">
+					<div class="editor-label">
+						@Html.LabelFor(model => model.Height, "View height (pixels)")
+					</div>
+				</td>
+				<td style="border: 0 hidden;">
+					<div class="editor-field">
+						@Html.EditorFor(model => model.Height, null, new { style = "width:200px;" })
+						@Html.ValidationMessageFor(model => model.Height)
+					</div>
+				</td>
+			</tr>
+
+			<tr>
+				<td style="border: 0 hidden;">
+					<div class="editor-label">
+						@Html.LabelFor(model => model.ChartType, "Chart type")
+					</div>
+				</td>
+				<td style="border: 0 hidden;">
+					<div class="editor-field">
+						@Html.DropDownList("ChartType", null, new { style = "width:206px;" })
+						@Html.ValidationMessageFor(model => model.ChartType)
+					</div>
+				</td>
+			</tr>
+
+			<tr>
+				<td style="border: 0 hidden;">
+					<div class="editor-label">
+						@Html.LabelFor(model => model.DataSetType, "Dataset type")
+					</div>
+				</td>
+				<td style="border: 0 hidden;">
+					<div class="editor-field">
+						@Html.DropDownList("DataSetType", null, new { style = "width:206px;" })
+						@Html.ValidationMessageFor(model => model.DataSetType)
+					</div>
+				</td>
+			</tr>
+
+			<tr>
+				<td style="border: 0 hidden;">
+					<div class="editor-label">
+						@Html.LabelFor(model => model.DataSetMaxCount, "Dataset max. point number (2-1000)")
+					</div>
+				</td>
+				<td style="border: 0 hidden;">
+					<div class="editor-field">
+						@Html.EditorFor(model => model.DataSetMaxCount, null, new { style = "width:200px;" })
+						@Html.ValidationMessageFor(model => model.DataSetMaxCount)
+					</div>
+				</td>
+			</tr>
+		</table>
+	</fieldset>
+	<p>
+		<input type="submit" value="Save" />
+	</p>
+}

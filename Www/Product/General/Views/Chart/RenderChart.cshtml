@@ -1,0 +1,25 @@
+﻿@model web.Models.ViewChart
+
+@{
+	ViewBag.Title = ViewBag.ExceptionMessage != null ? "Error" : Model.Name.TrimEnd();
+	Layout = ""; /*must be set empty explicitly*/
+}
+
+@{
+	if (ViewBag.ExceptionMessage != null)
+	{
+		@Html.Raw("Sorry, an error occurred while processing your request: " + (String)ViewBag.ExceptionMessage)
+	}
+	else
+	{
+		try
+		{
+			//  url rendering
+			@Html.Raw(Url.Action(ViewBag.FileName, "Temp"))
+		}
+		catch (Exception e)
+		{
+			@Html.Raw("Sorry, an error occurred while processing your request: " + e.Message)
+		}
+	}
+}

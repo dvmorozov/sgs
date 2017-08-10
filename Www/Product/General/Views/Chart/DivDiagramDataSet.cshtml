@@ -1,0 +1,100 @@
+﻿@using System.Globalization
+@model web.Models.ViewChart
+
+<script language="javascript" type="text/javascript">
+	window.onload = function () {
+		var valueIdentifiers = document.getElementsByTagName("value_identifier");
+
+		for (var j = 0; j < valueIdentifiers.length; j++) {
+			var el = valueIdentifiers[j];
+			if (el.childNodes[0].nodeValue != "empty") {
+
+				var attrs = el.parentNode.attributes;
+				var attr = document.createAttribute('stroke');
+				attr.nodeValue = 'black';
+				attrs.setNamedItem(attr);
+				
+				attr = document.createAttribute('stroke-width');
+				attr.nodeValue = '1';
+				attrs.setNamedItem(attr);
+				
+				attr = document.createAttribute('stroke-dasharray');
+				attr.nodeValue = '2,1';
+				attrs.setNamedItem(attr);
+			}
+		}
+	};
+
+	function svg_oumouseover(evt) {
+		var attrs = evt.target.attributes;
+		var attr = attrs.getNamedItem('stroke');
+		var newattr;
+		if (attr != null) {
+			newattr = document.createAttribute('saved-stroke');
+			newattr.nodeValue = attr.nodeValue;
+			attrs.setNamedItem(newattr);
+		}
+		attr = document.createAttribute('stroke');
+		attr.nodeValue = 'red';
+		attrs.setNamedItem(attr);
+
+		attr = attrs.getNamedItem('stroke-width');
+		if (attr != null) {
+			newattr = document.createAttribute('saved-stroke-width');
+			newattr.nodeValue = attr.nodeValue;
+			attrs.setNamedItem(newattr);
+		}
+		attr = document.createAttribute('stroke-width');
+		attr.nodeValue = '2';
+		attrs.setNamedItem(attr);
+
+		attr = attrs.getNamedItem('stroke-dasharray');
+		if (attr != null) {
+			newattr = document.createAttribute('saved-stroke-dasharray');
+			newattr.nodeValue = attr.nodeValue;
+			attrs.setNamedItem(newattr);
+		}
+		attr = document.createAttribute('stroke-dasharray');
+		attr.nodeValue = '2,1';
+		attrs.setNamedItem(attr);
+	}
+
+	function svg_oumouseout(evt) {
+		var attrs = evt.target.attributes;
+		attrs.removeNamedItem('stroke');
+		attrs.removeNamedItem('stroke-width');
+		attrs.removeNamedItem('stroke-dasharray');
+
+		var attr = attrs.getNamedItem('saved-stroke');
+		var newattr;
+		if (attr != null) {
+			newattr = document.createAttribute('stroke');
+			newattr.nodeValue = attr.nodeValue;
+			attrs.setNamedItem(newattr);
+			attrs.removeNamedItem('saved-stroke');
+		}
+
+		attr = attrs.getNamedItem('saved-stroke-width');
+		if (attr != null) {
+			newattr = document.createAttribute('stroke-width');
+			newattr.nodeValue = attr.nodeValue;
+			attrs.setNamedItem(newattr);
+			attrs.removeNamedItem('saved-stroke-width');
+		}
+
+		attr = attrs.getNamedItem('saved-stroke-dasharray');
+		if (attr != null) {
+			newattr = document.createAttribute('stroke-dasharray');
+			newattr.nodeValue = attr.nodeValue;
+			attrs.setNamedItem(newattr);
+			attrs.removeNamedItem('saved-stroke-dasharray');
+		}
+	}
+
+	function on_svg_click(id) {
+		window.location = document.URL.replace(/ShowDiagramDataSet/g, 'AttachDataElement') + '?svgID=' + id;
+	}
+</script>
+
+<!-- <iframe src="@Url.Action("ShowDiagram", "Chart", new {id = Model.ID})" @Html.Raw("width=\"" + ((int)ViewBag.Width).ToString(CultureInfo.InvariantCulture) + "\" height=\"" + ((int)ViewBag.Height).ToString(CultureInfo.InvariantCulture) + "\"")></iframe> -->
+@Html.Partial("ShowDiagram", Model)

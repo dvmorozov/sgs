@@ -1,0 +1,4 @@
+﻿@using System.Globalization
+
+
+<img id="@Html.Raw("div_chart_" + ((long)ViewBag.chartID).ToString(CultureInfo.InvariantCulture))" @Html.Raw("width=\"" + ((int)ViewBag.Width).ToString(CultureInfo.InvariantCulture) + "\" height=\"" + ((int)ViewBag.Height).ToString(CultureInfo.InvariantCulture) + "\"")/>

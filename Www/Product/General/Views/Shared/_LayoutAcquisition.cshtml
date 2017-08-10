@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/themes/flick/jquery.ui.all.css")" rel="stylesheet" type="text/css" media="all" />
+    <script src="@Url.Content("~/Scripts/jquery-1.6.2.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/modernizr-1.7.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/ui/jquery-ui-1.8.16.custom.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript"></script>
+</head>
+
+<script type="text/javascript">
+    window.onload = function () {
+        var v = document.getElementById('Submit');
+        if(null != v) v.focus();
+    }
+</script>
+
+<body id="workspace">
+    <div class="page">
+        <div id="header">
+            <div id="title">
+                <div class="logo">
+                    @if (null != User.Identity.Name && !User.Identity.Name.IsEmpty()/*should be!*/)
+                    {
+                        <text>@Html.Raw((String)ViewBag.AppName1) <span>@Html.Raw((String)ViewBag.AppName2)</span> greets <strong>@User.Identity.Name</strong></text>
+                    }
+                    else
+                    { 
+                        <text>@Html.Raw((String)ViewBag.AppName1) <span>@Html.Raw((String)ViewBag.AppName2)</span></text>
+                    }    
+                </div>
+            </div>
+            <div id="menucontainer">
+                <ul id="menu_workspace">
+                    @if (Roles.IsUserInRole(User.Identity.Name, "Administrator") || Roles.IsUserInRole(User.Identity.Name, "User"))
+                    {
+                        @Html.Raw("<li>") @Html.ActionLink("Modeling", "Index", "DeviceType") @Html.Raw("</li>")                        
+                        @Html.Raw("&#32;<li id=\"selected\">") @Html.ActionLink("Acquisition", "Index", "Group") @Html.Raw("</li>")
+                        @Html.Raw("&#32;<li>") @Html.ActionLink("Representation", "Index", "ChartSet") @Html.Raw("</li>")
+                    }
+                    else
+                    {
+                        @Html.Raw(" ");
+                        <!-- <li>@Html.ActionLink("Data", "Upload", "Data")</li> -->
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Products", "Index", "Product")</li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <div @Html.Raw("id=\"main\"")>
+            @RenderBody()
+        </div>
+        <div id="footer_workspace">
+            Copyright &copy; 2011-2012 <text class="logo_workspace" style="position:relative;">@Html.Raw((String)ViewBag.AppName1) <span>@Html.Raw((String)ViewBag.AppName2)</span></text> | Rev. 3044 | @Html.Partial("_LogOnPartial")
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+﻿@using System.Globalization
+@model web.Models.ViewCOSEMObject
+
+@{
+	ViewBag.Title = "New COSEM object";
+	Layout = "~/Views/Shared/_LayoutModeling.cshtml";
+}
+
+<h2>@Html.Raw(ViewBag.Title)</h2>
+
+<p>
+	@Html.ActionLink("Objects", "Index/" + Model.COSEMLogicalDeviceID.ToString(CultureInfo.InvariantCulture))
+</p>
+
+@using (Html.BeginForm())
+{
+	@Html.ValidationSummary(true)
+
+	<fieldset>
+		<legend>COSEM object properties</legend>
+
+		@Html.HiddenFor(model => model.DeviceTypeID)
+		@Html.HiddenFor(model => model.COSEMLogicalDeviceID)
+
+		<table style="width:100%;">
+			<tr>
+				<td style="border: 0 hidden;">
+					<div class="display-label">Device type</div>
+				</td>
+				<td style="border: 0 hidden;">
+					<div class="display-field">
+						@Html.Raw(ViewBag.DeviceTypeName)
+					</div>
+				</td>
+			</tr>
+
+			<tr>
+				<td style="border: 0 hidden;">
+					<div class="display-label">COSEM logical device ID</div>
+				</td>
+				<td style="border: 0 hidden;">
+					<div class="display-field">
+						@Html.Raw(Model.COSEMLogicalDeviceID.ToString(CultureInfo.InvariantCulture))
+					</div>
+				</td>
+			</tr>
+
+			<tr>
+				<td style="border: 0 hidden;">
+					<div class="editor-label">
+						@Html.LabelFor(model => model.COSEMClassID, "COSEM class")
+					</div>
+				</td>
+				<td style="border: 0 hidden;">
+					<div class="editor-field">
+						@Html.DropDownList("COSEMClassID"/*, null, new { style = "width:100%;" }*/)
+						@Html.ValidationMessageFor(model => model.COSEMClassID)
+					</div>
+				</td>
+			</tr>
+
+			<tr>
+				<td style="border: 0 hidden;">
+					<div class="editor-label">
+						@Html.LabelFor(model => model.COSEMLogicalName, "COSEM logical name")
+					</div>
+				</td>
+				<td style="border: 0 hidden;">
+					<div class="editor-field">
+						@Html.TextBoxFor(model => model.COSEMLogicalName /*, new { style = "width:100%;" }*/)
+						@Html.ValidationMessageFor(model => model.COSEMLogicalName)
+					</div>
+				</td>
+			</tr>
+		</table>
+	</fieldset>
+	<p>
+		<input type="submit" value="Create" />
+	</p>
+}

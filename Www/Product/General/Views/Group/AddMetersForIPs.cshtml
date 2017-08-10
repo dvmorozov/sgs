@@ -1,0 +1,233 @@
+﻿@model web.Models.ViewGroup
+
+@{
+	ViewBag.Title = "New meters for IP-range";
+	Layout = "~/Views/Shared/_LayoutAcquisition.cshtml";
+}
+
+<h2>@Html.Raw(ViewBag.Title)</h2>
+
+<p>
+	@Html.ActionLink("Meter Groups", "Index")
+</p>
+
+@using (Html.BeginForm())
+{
+	@Html.ValidationSummary(true)
+	<fieldset>
+		<legend>Meter group properties</legend>
+
+		<table style="width: 100%;">
+			<tbody>
+				<tr>
+					<td style="border: 0 hidden;">
+						<div class="editor-label">
+							@if (Model != null)
+							{
+								@Html.LabelFor(model => model.Name, "Group name")
+							}
+						</div>
+						<div class="editor-field">
+							@if (Model != null)
+							{
+								@Html.TextBoxFor(model => model.Name)
+								@Html.ValidationMessageFor(model => model.Name)
+							}
+						</div>
+					</td>
+					<td style="border: 0 hidden;">
+						<div class="editor-label">
+							@if (Model != null)
+							{
+								@Html.LabelFor(model => model.DeviceTypeID, "Meter type")
+							}
+						</div>
+						<div class="editor-field">
+							@Html.DropDownList("DeviceTypeID")
+							@if (Model != null)
+							{
+								@Html.ValidationMessageFor(model => model.DeviceTypeID)
+							}
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</fieldset>
+
+	<fieldset>
+		<legend>Meter population</legend>
+
+		<table style="width: 100%;">
+			<tr>
+				<td style="border: 0 hidden;">
+					<div class="editor-label">
+						@if (Model != null)
+						{
+							@Html.LabelFor(model => model.DeviceNamePrefix, "Meter name prefix")
+						}
+					</div>
+					<div class="editor-field">
+						@if (Model != null)
+						{
+							@Html.TextBoxFor(model => model.DeviceNamePrefix)
+							@Html.ValidationMessageFor(model => model.DeviceNamePrefix)
+						}
+					</div>
+				</td>
+			</tr>
+		</table>
+
+		<table style="width: 100%;">
+			<tr>
+				<td style="border: 0 hidden;">
+					<fieldset>
+						<legend>Primary IP population</legend>
+
+						<div class="editor-label">
+							<label>Initial primary IP</label>
+							<label style="margin-left: -10000px; overflow: hidden;">Inititial IP2</label>
+							<label style="margin-left: -10000px; overflow: hidden;">Inititial IP3</label>
+							<label style="margin-left: -10000px; overflow: hidden;">Inititial IP4</label>
+						</div>
+						                              
+						<div class="editor-field">
+							@if (Model != null)
+							{
+								@Html.TextBoxFor(model => model.StartingIP1, new {style = "width:33px;"})
+								@Html.ValidationMessageFor(model => model.StartingIP1)
+							} .
+							@if (Model != null)
+							{
+								@Html.TextBoxFor(model => model.StartingIP2, new {style = "width:33px;"})
+								@Html.ValidationMessageFor(model => model.StartingIP2)
+							} .
+							@if (Model != null)
+							{
+								@Html.TextBoxFor(model => model.StartingIP3, new {style = "width:33px;"})
+								@Html.ValidationMessageFor(model => model.StartingIP3)
+							} .
+							@if (Model != null)
+							{
+								@Html.TextBoxFor(model => model.StartingIP4, new {style = "width:33px;"})
+								@Html.ValidationMessageFor(model => model.StartingIP4)
+							}
+						</div>
+
+						<div class="editor-label">
+							<label>Final primary IP</label>
+							<label style="margin-left: -10000px; overflow: hidden;">Final IP2</label>
+							<label style="margin-left: -10000px; overflow: hidden;">Final IP3</label>
+							<label style="margin-left: -10000px; overflow: hidden;">Final IP4</label>
+						</div>
+
+						<div class="editor-field">
+							@if (Model != null)
+							{
+								@Html.TextBoxFor(model => model.EndingIP1, new {style = "width:33px;"})
+								@Html.ValidationMessageFor(model => model.EndingIP1)
+							} . 
+							@if (Model != null)
+							{
+								@Html.TextBoxFor(model => model.EndingIP2, new {style = "width:33px;"})
+								@Html.ValidationMessageFor(model => model.EndingIP2)
+							} .
+							@if (Model != null)
+							{
+								@Html.TextBoxFor(model => model.EndingIP3, new {style = "width:33px;"})
+								@Html.ValidationMessageFor(model => model.EndingIP3)
+							} .
+							@if (Model != null)
+							{
+								@Html.TextBoxFor(model => model.EndingIP4, new {style = "width:33px;"})
+								@Html.ValidationMessageFor(model => model.EndingIP4)
+							} 
+						</div>
+					</fieldset>
+				</td>
+
+				<td style="border: 0 hidden;">
+					<fieldset>
+						<legend>Primary IP-port population</legend>
+
+						<div class="editor-label">
+							<label>Initial primary port</label>
+						</div>
+
+						<div class="editor-field">
+							@if (Model != null)
+							{
+								@Html.TextBoxFor(model => model.StartingIPPort, new {style = "width:50px;"})
+								@Html.ValidationMessageFor(model => model.StartingIPPort)
+							}
+						</div>
+
+						<div class="editor-label">
+							<label>Final primary port</label>
+						</div>
+
+						<div class="editor-field">
+							@if (Model != null)
+							{
+								@Html.TextBoxFor(model => model.EndingIPPort, new {style = "width:50px;"})
+								@Html.ValidationMessageFor(model => model.EndingIPPort)
+							}
+						</div>
+					</fieldset>
+				</td>
+
+				<td style="border: 0 hidden;">
+					<fieldset>
+						<legend>Secondary IP population</legend>
+
+						<div class="editor-label">
+							<label>Initial secondary IP</label>
+							<label style="margin-left: -10000px; overflow: hidden;">Inititial secondary IP2</label>
+							<label style="margin-left: -10000px; overflow: hidden;">Inititial secondary IP3</label>
+							<label style="margin-left: -10000px; overflow: hidden;">Inititial secondary IP4</label>
+						</div>
+
+						<div class="editor-field">
+							@if (Model != null)
+							{
+								@Html.TextBoxFor(model => model.SecondaryStartingIP1, new {style = "width:33px;"})
+								@Html.ValidationMessageFor(model => model.SecondaryStartingIP1)
+							} . 
+							@if (Model != null)
+							{
+								@Html.TextBoxFor(model => model.SecondaryStartingIP2, new {style = "width:33px;"})
+								@Html.ValidationMessageFor(model => model.SecondaryStartingIP2)
+							} .
+							@if (Model != null)
+							{
+								@Html.TextBoxFor(model => model.SecondaryStartingIP3, new {style = "width:33px;"})
+								@Html.ValidationMessageFor(model => model.SecondaryStartingIP3)
+							} .
+							@if (Model != null)
+							{
+								@Html.TextBoxFor(model => model.SecondaryStartingIP4, new {style = "width:33px;"})
+								@Html.ValidationMessageFor(model => model.SecondaryStartingIP4)
+							} 
+						</div>
+
+						<div class="editor-label">
+							<label>Initial secondary port</label>
+						</div>
+
+						<div class="editor-field">
+							@if (Model != null)
+							{
+								@Html.TextBoxFor(model => model.SecondaryStartingIPPort, new {style = "width:50px;"})
+								@Html.ValidationMessageFor(model => model.SecondaryStartingIPPort)
+							}
+						</div>
+					</fieldset>
+				</td>
+			</tr>
+		</table>
+	</fieldset>
+
+	<p>
+		<input type="submit" value="Create" />
+	</p>
+}

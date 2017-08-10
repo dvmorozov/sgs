@@ -1,0 +1,85 @@
+﻿@model web.Models.ViewChart
+
+@{
+	ViewBag.Title = "Chart details";
+	Layout = "~/Views/Shared/_LayoutRepresentation.cshtml";
+}
+
+<h2>@Html.Raw("Details of chart" + " \"" + Model.Name.TrimEnd() + "\"")</h2>
+
+<p>
+	@Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+	@Html.ActionLink("Charts & Diagrams", "Index")
+</p>
+
+<fieldset>
+	<legend>Chart properties</legend>
+
+	<table style="width:100%;">
+		<tr>
+			<td style="border: 0 hidden;">
+				<div class="display-label">Title</div>
+			</td>
+			<td style="border: 0 hidden;">
+				<div class="display-field">
+					@Html.DisplayFor(model => model.Name)
+				</div>
+			</td>
+		</tr>
+
+		<tr>
+			<td style="border: 0 hidden;">
+				<div class="display-label">Chart width (pixels)</div>
+			</td>
+			<td style="border: 0 hidden;">
+				<div class="display-field">
+					@Html.DisplayFor(model => model.Width)
+				</div>
+			</td>
+		</tr>
+
+		<tr>
+			<td style="border: 0 hidden;">
+				<div class="display-label">Chart height (pixels)</div>
+			</td>
+			<td style="border: 0 hidden;">
+				<div class="display-field">
+					@Html.DisplayFor(model => model.Height)
+				</div>
+			</td>
+		</tr>
+
+		<tr>
+			<td style="border: 0 hidden;">
+				<div class="display-label">Chart type</div>
+			</td>
+			<td style="border: 0 hidden;">
+				<div class="display-field">
+					@Html.DisplayFor(model => model.ChartType)
+				</div>
+			</td>
+		</tr>
+
+		<tr>
+			<td style="border: 0 hidden;">
+				<div class="display-label">Dataset type</div>
+			</td>
+			<td style="border: 0 hidden;">
+				<div class="display-field">
+					@Html.DisplayFor(model => model.DataSetType)
+				</div>
+			</td>
+		</tr>
+
+		<tr>
+			<td style="border: 0 hidden;">
+				@Html.Raw("<div class=\"display-label\">Dataset max. point number (2-1000)</div>");
+			</td>
+			<td style="border: 0 hidden;">
+				<div class="display-field">
+					@Html.DisplayFor(model => model.DataSetMaxCount)
+				</div>
+			</td>
+		</tr>
+	</table>
+</fieldset>

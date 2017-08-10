@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://www.rationalcity.com/XMLSchema/XMLSchema62056.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://www.rationalcity.com/XMLSchema/XMLSchema62056.xsd"
+    xmlns:mstns="http://www.rationalcity.com/XMLSchema/XMLSchema62056.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+
+<xs:element name="value_set" type="value_set"/>
+<xs:complexType name="value_set">
+  <xs:all>
+    <xs:element name="exteneded_register_value" type="extended_register_value" />
+  </xs:all>
+</xs:complexType>
+
+<xs:element name="extended_register_value" type="extended_register_value"/>
+<xs:complexType name="extended_register_value">
+  <xs:sequence>
+    <xs:element name="value_identifier" type="xs:string"></xs:element>
+    <xs:element name="value" type="instance-specific-value"/>
+    <xs:element name="scaler_unit" type="scal_unit_type"/>
+    <xs:element name="status" type="instance-specific-status"/>
+    <xs:element name="capture_time" type="date-time-octet-string"/>
+  </xs:sequence>
+  <xs:attribute name="logical_name" type="xs:string"/>
+</xs:complexType>
+
+<xs:complexType name="instance-specific-value">
+  <xs:choice>
+    <xs:element name="float-value" type="xs:float"/>
+    <xs:element name="int-value" type="xs:int"/>
+  </xs:choice>
+</xs:complexType>
+
+<xs:complexType name="scal_unit_type">
+  <xs:sequence>
+    <xs:element name="scaler" type="xs:int"/>
+    <xs:element name="unit" type="unit-enum"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:simpleType name="unit-enum">
+  <xs:restriction base="xs:int">
+    <xs:enumeration value="1" id="year" />
+    <xs:enumeration value="2" id="month" />
+    <xs:enumeration value="3" id="week" />
+    <xs:enumeration value="4" id="day" />
+    <xs:enumeration value="5" id="hour" />
+    <xs:enumeration value="6" id="min" />
+    <xs:enumeration value="7" id="s" />
+  </xs:restriction>    
+</xs:simpleType>
+
+<xs:complexType name="instance-specific-status">
+  <xs:choice>
+    <xs:element name="int_status" type="xs:int"/>
+  </xs:choice>
+</xs:complexType>
+
+<xs:complexType name="date-time-octet-string">
+  <xs:sequence>
+    <xs:element name="year" type="xs:short"/>
+    <xs:element name="month" type="xs:byte"/>
+    <xs:element name="day_of_month" type="xs:byte"/>
+    <xs:element name="day_of_week" type="xs:byte"/>
+    <xs:element name="hour" type="xs:byte"/>
+    <xs:element name="minute" type="xs:byte"/>
+    <xs:element name="second" type="xs:byte"/>
+    <xs:element name="hundredths_of_second" type="xs:byte"/>
+    <xs:element name="deviation" type="xs:short"/>
+    <xs:element name="invalid_value" type="xs:boolean"/>
+    <xs:element name="doubtful_value" type="xs:boolean"/>
+    <xs:element name="different_clock_base" type="xs:boolean"/>
+    <xs:element name="invalid_clock_status" type="xs:boolean"/>
+    <xs:element name="daylight_saving_active" type="xs:boolean"/>
+  </xs:sequence>
+</xs:complexType>
+
+</xs:schema>

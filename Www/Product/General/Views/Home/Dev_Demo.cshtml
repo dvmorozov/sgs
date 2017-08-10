@@ -1,0 +1,31 @@
+﻿@{
+	ViewBag.Title = "Demo";
+	Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<h1>Demo</h1>
+
+<table width="100%">
+	<tr>
+		<td style="border: 0 hidden;">
+			<div class="display-label demo-link">
+				@Html.ActionLink("An example of animated diagram", "ShowDiagram", "Home")
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td style="border: 0 hidden;">
+			<div class="display-label demo-link">
+				@Html.ActionLink("An example of animated server-side chart", "ShowChart", "Home")
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td style="border: 0 hidden;">
+			<div class="display-label demo-link">
+				@Html.ActionLink("An example of animated server-side chart set", "ShowChartSet", "Home")
+			</div>
+		</td>
+	</tr>
+</table>
+

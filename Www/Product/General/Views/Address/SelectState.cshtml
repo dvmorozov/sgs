@@ -1,0 +1,35 @@
+﻿@model IEnumerable<web.Models.ViewState>
+
+@{
+	ViewBag.Title = "Select state";
+	Layout = "~/Views/Shared/_LayoutModeling.cshtml";
+
+	var grid = new WebGrid(Model,
+						   defaultSort: "State",
+						   rowsPerPage: 20); 
+}
+
+<h2>Select state</h2>
+
+<p>
+	@Html.ActionLink("Cancel", ""/*empty action name*/, (String)ViewBag.ReturnTo) |
+	@Html.ActionLink("New", "CreateState", new { id = (Int64)ViewBag.CountryID, returnTo = (String)ViewBag.ReturnTo }) |
+	@Html.ActionLink("Locations", "Index")
+</p>
+
+<div class="webgrid-wrapper">
+	<div class="webgrid-title"></div>
+	<div id="grid">
+		@grid.GetHtml( 
+			tableStyle: "grid", 
+			headerStyle: "head", 
+			alternatingRowStyle: "alt",
+			footerStyle: "footer",
+			columns: grid.Columns(
+				grid.Column("State", "State", style: "product"),
+				grid.Column("ID", "", @<text>@Html.ActionLink("Select", "SelectCity", new { id = item.ID, countryid = item.CountryID, returnTo = (String)ViewBag.ReturnTo })</text>, style: "product", canSort: false)
+			),
+			numericLinksCount: 20
+		)
+	</div>
+</div>

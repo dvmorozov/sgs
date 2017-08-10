@@ -1,0 +1,60 @@
+﻿@model web.Models.ViewSVGDataElementState
+
+@{
+	ViewBag.Title = "Edit state";
+	Layout = "~/Views/Shared/_LayoutRepresentation.cshtml";
+}
+
+<h2>@Html.Raw(ViewBag.Title)</h2>
+
+<p>
+	@Html.ActionLink("States", "Index", new { id = (long)ViewBag.ChartID, docID = (long)ViewBag.DocID, svgID = (string)ViewBag.SVGID, valueIdentifier = (string)ViewBag.ValueIdentifier, identifier = (string)ViewBag.Identifier })
+</p>
+
+@using (Html.BeginForm())
+{
+	@Html.ValidationSummary(true)
+	<fieldset>
+		<legend>State properties</legend>
+		@Html.Hidden("chartID", (long)ViewBag.ChartID)
+		@Html.Hidden("docID", (long)ViewBag.DocID)
+		@Html.Hidden("svgID", (string)ViewBag.SVGID)
+		@Html.Hidden("valueIdentifier", (string)ViewBag.ValueIdentifier)
+		@Html.Hidden("identifier", (string)ViewBag.Identifier)
+
+		<table style="width:100%;">
+			<tr>
+				<td style="border: 0 hidden;">
+					<div class="editor-label">
+						@Html.LabelFor(model => model.LowLimit, "Low Limit")
+					</div>
+				</td>
+				<td style="border: 0 hidden;">
+					<div class="editor-field">
+						@Html.EditorFor(model => model.LowLimit)
+						@Html.ValidationMessageFor(model => model.LowLimit)
+					</div>
+				</td>
+			</tr>
+
+			<tr>
+				<td style="border: 0 hidden;">
+					<div class="editor-label">
+						@Html.LabelFor(model => model.State, "State")
+					</div>
+				</td>
+				<td style="border: 0 hidden;">
+					<div class="editor-field">
+						@Html.EditorFor(model => model.State)
+						@Html.ValidationMessageFor(model => model.State)
+					</div>
+				</td>
+			</tr>
+		</table>
+	</fieldset>
+
+	<p>
+		<input type="submit" value="Save" />
+	</p>
+}
+
